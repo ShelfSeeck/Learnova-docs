@@ -1,3 +1,7 @@
-baseURL = 'https://example.org/'
-locale = 'en-us'
-title = 'My New Hugo Project'
+baseURL = 'https://ta.njunova.com/'
+locale = 'zh-CN'
+title = 'Learnova-docs'
+theme = "book"
+defaultContentLanguage = "zh"
+license = "CC BY-NC-SA 4.0"
+
