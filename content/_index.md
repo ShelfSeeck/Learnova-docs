@@ -11,6 +11,7 @@ weight: 1
 # bookIcon: ''
 draft: false
 ---
+# 这是一个怎样的项目？
 <br>
 <br>
 <img src="/assets/LEARNOVA.svg" width="500" />
@@ -18,8 +19,6 @@ draft: false
  —— 一个服务于呢喃~~水课~~课业学习的Skill社区。来源于社团NOVA的一个兴趣小组。
 
  
-
-# 这是一个怎样的项目？
 ---
 你是否遇到过，把整本课本丢给 AI，它却总是遗忘、胡言乱语？或者面对新的各种资料转换转半天，找不到一个合适的路径？
 

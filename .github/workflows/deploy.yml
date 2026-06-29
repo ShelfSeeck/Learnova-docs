@@ -1,0 +1,44 @@
+name: Deploy Hugo Site to Server
+
+on:
+  push:
+    branches:
+      - main # 触发分支，当 main 分支有 push 时触发部署
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 拉取代码（注意：必须包含 submodules: true，因为你的主题是 git 子模块）
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          submodules: true # 自动拉取 themes/book 子模块
+          fetch-depth: 0 # 设为 0 获取完整提交历史，这样 .GitInfo（最后修改时间）才能正常生效
+
+      # 2. 安装 Hugo 环境
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true # 使用 extended 版本（因为 themes/book 包含 SCSS 编译）
+
+      # 3. 编译静态网页
+      - name: Build Site
+        run: |
+          hugo --minify
+
+      # 4. 通过 Rsync 部署到你的 Nginx 服务器
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v5.1.0
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.LERANOVA }} # 部署私钥
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }} # 服务器 IP 或域名
+          REMOTE_USER: ${{ secrets.SERVER_USER }} # 服务器 SSH 用户（例如 root 或 deploy）
+          # 源目录：因为你的 hugo.toml 里配置了 publishDir = "../public"，
+          # 编译后的产物在项目同级目录的 public 文件夹下，所以是 ../public/
+          SOURCE: "../public/"
+          # 目标目录：从 GitHub Secret 读取服务器上的实际 Web 目录路径
+          TARGET: ${{ secrets.SERVER_TARGET }}
+          # 额外的 rsync 参数，-rlptgoD 代表保持权限、时间戳等，--delete 代表同步删除服务器上已在本地删除的文件
+          ARGS: "-rlptgoD --delete"

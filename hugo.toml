@@ -1,4 +1,4 @@
-baseURL = 'https://ta.njunova.com/'
+baseURL = 'https://ta.njunova.com/docs/'
 locale = 'zh-CN'
 title = 'LEARNOVA文档'
 theme = "book"
