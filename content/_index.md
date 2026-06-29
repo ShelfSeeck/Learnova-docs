@@ -13,7 +13,7 @@ draft: false
 ---
 <br>
 <br>
-<img src="/assets/logo.svg" width="500" />
+<img src="/assets/LEARNOVA.svg" width="500" />
 
  —— 一个服务于呢喃~~水课~~课业学习的Skill社区。来源于社团NOVA的一个兴趣小组。
 

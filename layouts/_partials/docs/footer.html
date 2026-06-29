@@ -1,0 +1,39 @@
+<div class="flex flex-wrap justify-between">
+
+<div>
+{{ if and .GitInfo .Site.Params.BookLastChangeLink }}
+  {{- $date := partial "docs/date" (dict "Date" .Lastmod "Format" .Site.Params.BookDateFormat) -}}
+  <a class="flex align-center" href="{{ partial "docs/links/commit" . }}" title='{{ partial "docs/text/i18n" "Last modified by" }} {{ .GitInfo.AuthorName }} | {{ $date }}' target="_blank" rel="noopener">
+    <img src="{{ partial "docs/icon" "calendar" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Calendar" }}" />
+    <span>{{ $date }}</span>
+  </a>
+{{ end }}
+</div>
+
+<div>
+{{ if and .File .Site.Params.BookEditLink }}
+  <a class="flex align-center" href="{{ partial "docs/links/edit" . }}" target="_blank" rel="noopener edit">
+    <img src="{{ partial "docs/icon" "edit" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Edit" }}" />
+    <span>{{ partial "docs/text/i18n" "Edit this page" }}</span>
+  </a>
+{{ end }}
+</div>
+
+</div>
+
+<!-- 自定义版权许可和仓库链接 -->
+<hr style="border: 0; border-top: 1px solid var(--gray-200); margin: 1.5rem 0 1rem 0;" />
+<div class="flex flex-wrap justify-between" style="font-size: var(--font-size-smaller); color: var(--gray-500); line-height: 1.5;">
+  <div>
+    {{ with .Site.Params.license }}
+      <span>本站文档采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">{{ . }}</a> 协议许可</span>
+    {{ end }}
+  </div>
+  <div>
+    {{ with .Site.Params.BookRepo }}
+      <span>项目源码：<a href="{{ . }}" target="_blank" rel="noopener">GitHub 仓库</a></span>
+    {{ end }}
+  </div>
+</div>
+
+{{ partial "docs/prev-next" . }}
