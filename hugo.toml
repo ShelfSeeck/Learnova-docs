@@ -1,14 +1,24 @@
 baseURL = 'https://ta.njunova.com/'
+title = "LEARNOVA文档"
 locale = 'zh-CN'
-title = 'LEARNOVA文档'
 theme = "book"
 defaultContentLanguage = "zh"
 license = "CC BY-NC-SA 4.0"
 hasCJKlanguage = true
 enableGitInfo = true
 publishDir = "../public"
+
+[params]
+    BookSearch = true
+    BookTheme = 'light'
+    BookLogo = 'logo.svg'
+    BookRepo = 'https://github.com/ShelfSeeck/Learnova-docs'
+    BookDateFormat = 'January 2, 2006'
+
 [markup]
     [markup.goldmark.renderer]
         unsafe = true
     [markup.highlight]
         style = "github"
+
+
