@@ -1,6 +1,9 @@
 ---
 title: "项目介绍"
 weight: 1
+type: docs
+cascade:
+  type: docs
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
@@ -11,12 +14,15 @@ weight: 1
 # bookIcon: ''
 draft: false
 ---
-# 这是一个怎样的项目？
 <br>
-<br>
-<img src="/assets/LEARNOVA.svg" width="500" />
 
- —— 一个服务于呢喃~~水课~~课业学习的Skill社区。来源于社团NOVA的一个兴趣小组。
+
+# 这是一个怎样的项目？
+
+
+<img src="LEARNOVA.svg" width="300" />
+
+> —— 一个服务于呢喃~~水课~~课业学习的Skill社区。来源于社团NOVA的一个兴趣小组。
 
  
 ---
