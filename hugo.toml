@@ -1,7 +1,14 @@
 baseURL = 'https://ta.njunova.com/'
 locale = 'zh-CN'
-title = 'Learnova-docs'
+title = 'LEARNOVA文档'
 theme = "book"
 defaultContentLanguage = "zh"
 license = "CC BY-NC-SA 4.0"
-
+hasCJKlanguage = true
+enableGitInfo = true
+publishDir = "../public"
+[markup]
+    [markup.goldmark.renderer]
+        unsafe = true
+    [markup.highlight]
+        style = "github"
