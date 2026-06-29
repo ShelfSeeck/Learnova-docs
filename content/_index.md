@@ -16,9 +16,7 @@ draft: false
 ---
 <br>
 
-
 # 这是一个怎样的项目？
-
 
 <img src="LEARNOVA.svg" width="300" />
 

@@ -9,26 +9,46 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # 1. 拉取代码（注意：必须包含 submodules: true，因为你的主题是 git 子模块）
+      # 1. 检查必要的 Secret 是否已配置
+      - name: Check Required Secrets
+        run: |
+          if [ -z "${{ secrets.SERVER_KEY }}" ]; then
+            echo "::error::错误: 缺少 SERVER_KEY (SSH 私钥) 密钥配置！"
+            exit 1
+          fi
+          if [ -z "${{ secrets.SERVER_HOST }}" ]; then
+            echo "::error::错误: 缺少 SERVER_HOST 密钥配置！"
+            exit 1
+          fi
+          if [ -z "${{ secrets.SERVER_USER }}" ]; then
+            echo "::error::错误: 缺少 SERVER_USER 密钥配置！"
+            exit 1
+          fi
+          if [ -z "${{ secrets.SERVER_TARGET }}" ]; then
+            echo "::error::错误: 缺少 SERVER_TARGET 密钥配置！"
+            exit 1
+          fi
+
+      # 2. 拉取代码（注意：必须包含 submodules: true，因为你的主题是 git 子模块）
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
           submodules: true # 自动拉取 themes/book 子模块
           fetch-depth: 0 # 设为 0 获取完整提交历史，这样 .GitInfo（最后修改时间）才能正常生效
 
-      # 2. 安装 Hugo 环境
+      # 3. 安装 Hugo 环境
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
           extended: true # 使用 extended 版本（因为 themes/book 包含 SCSS 编译）
 
-      # 3. 编译静态网页
+      # 4. 编译静态网页
       - name: Build Site
         run: |
           hugo --minify
 
-      # 4. 通过 Rsync 部署到你的 Nginx 服务器
+      # 5. 通过 Rsync 部署到你的 Nginx 服务器
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v5.1.0
         with:
