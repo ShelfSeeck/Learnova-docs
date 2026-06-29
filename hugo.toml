@@ -1,5 +1,4 @@
 baseURL = 'https://ta.njunova.com/'
-title = "LEARNOVA文档"
 locale = 'zh-CN'
 theme = "book"
 defaultContentLanguage = "zh"
@@ -11,6 +10,7 @@ publishDir = "../public"
 [params]
     BookSearch = true
     BookTheme = 'light'
+    BookTitle = "LEARNOVA文档"
     BookLogo = 'logo.svg'
     BookRepo = 'https://github.com/ShelfSeeck/Learnova-docs'
     BookDateFormat = 'January 2, 2006'

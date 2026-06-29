@@ -1,2 +1,4 @@
 public/
 .obsidian/
+.hugo_build.lock
+book.scss_*

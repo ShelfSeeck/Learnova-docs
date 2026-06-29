@@ -10,7 +10,6 @@ weight: 1
 # bookHref: ''
 # bookIcon: ''
 draft: false
-layout: landing
 ---
 <br>
 <br>
